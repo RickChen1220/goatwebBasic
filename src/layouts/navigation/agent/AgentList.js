@@ -23,13 +23,13 @@ export default function AgentList({ setDrawerOpen }) {
     {
       name: "bucharati",
       icon: <HomeIcon />,
-      url: "https://goat-360609.de.r.appspot.com/agent/detail?name=mudamuda",
+      url: "000",
     },
     {
       name: "jojo",
       icon: <HomeIcon />,
       //Testing if could get the url props
-      url: "111",
+      url: "000",
     },
   ];
 
