@@ -6,7 +6,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Dashboard />} />
-      <Route path="agent/:name" element={<Agent />} />
+      <Route path="/:name" element={<Agent />} />
     </Routes>
   );
 }

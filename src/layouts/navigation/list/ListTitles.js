@@ -10,34 +10,33 @@ import { useNavigate } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import axios from "axios";
 
-export default function AgentList({ setDrawerOpen }) {
+export default function ListTitles({ setDrawerOpen }) {
   let navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
-  const agents = [
+  const titles = [
     {
-      name: "mudamuda",
+      name: "Agent",
       icon: <HomeIcon />,
-      url: "https://goat-360609.de.r.appspot.com/agent/detail?name=mudamuda",
+      url: "http://localhost:5000/titles/agent", //Testing if could get the url props
     },
     {
-      name: "bucharati",
+      name: "My Strategies",
       icon: <HomeIcon />,
-      url: "000",
+      url: "http://localhost:5000/titles/mystrategies",
     },
     {
-      name: "jojo",
+      name: "XXX",
       icon: <HomeIcon />,
-      //Testing if could get the url props
-      url: "000",
+      url: "http://localhost:5000/titles/xxx",
     },
   ];
 
-  const getAgentapi = async (agents) => {
+  const getAgentapi = async (titles) => {
     setIsLoading(true);
 
     await axios
-      .get(`${agents.url}`)
+      .get(`${titles.url}`)
       .then((res) => {
         setIsLoading(false);
         console.log(res);
@@ -49,17 +48,17 @@ export default function AgentList({ setDrawerOpen }) {
 
   return (
     <List>
-      {agents.map((agents) => (
-        <ListItem key={agents.name}>
+      {titles.map((titles) => (
+        <ListItem key={titles.name}>
           <ListItemButton
             onClick={() => {
               setDrawerOpen(false);
-              getAgentapi(agents);
-              navigate(`/agent/${agents.name}`);
+              getAgentapi(titles);
+              navigate(`/${titles.name}`);
             }}
           >
-            <ListItemIcon> {agents.icon} </ListItemIcon>
-            <ListItemText primary={agents.name} />
+            <ListItemIcon> {titles.icon} </ListItemIcon>
+            <ListItemText primary={titles.name} />
           </ListItemButton>
           {isLoading && <p>Loading...</p>}
         </ListItem>
